@@ -1,8 +1,27 @@
-
-
-#' @export
+#########################################################################
+#
+# Package: Paternity
+#
+# File: functions.R
+# Contains: paternity, proportion
+#
+# Written by Samuel Beazley
+#
+# First version: March-2021
+# Last update: 5-Apr-2021
+#
+#########################################################################
 #' @import dplyr
 #' @importFrom magrittr "%>%"
+#'
+#'
+#' Paternity by Exclusion Test
+#'
+#' @param x matrix of values to test. The matrix should be 3 columns with the progeny being tested in the second column.
+#' @return A vector with proportion of cases that has a mismatch a.k.a. pedigree conflict.
+#'
+#' @export
+
 paternity <- function(x)
 {
   y <- dplyr::as_tibble(x) #converting matrix to tibble
@@ -24,6 +43,17 @@ paternity <- function(x)
   return(p)
 }
 
+#'
+#' Test parentage of individual
+#'
+#' Given individual and a vectors of possible parents, function returns dataframe of proportion of pedigree conflict with each parent combination
+#'
+#' @param parents a vector with strings related to the name of the suspected parents
+#' @param individual a string value with the individual name you are testing
+#' @param data the dataframe from which the data is from
+#'
+#' @return A dataframe of different combinations of parent and individual with the proportion of pedigree conflicts
+#'
 #' @export
 proportion <- function(parents, individual, data)
 {

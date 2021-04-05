@@ -11,3 +11,4 @@
 #' @examples data(potato.data)
 #'
 #' @name potato.data
+NULL

@@ -14,13 +14,19 @@
 #'
 #' Test parentage of individual
 #'
-#' Given individual and a vectors of possible parents, function returns dataframe of proportion of pedigree conflict with each parent combination
+#' Given individual and a vectors of possible parents, function returns dataframe of proportion of pedigree conflict with each possible trio
 #'
 #' @param parents a vector with strings related to the name of the suspected parents
 #' @param individual a string value with the individual name you are testing
 #' @param data the dataframe from which the data is from
 #'
-#' @return A dataframe of different combinations of parent and individual with the proportion of pedigree conflicts
+#' @return A dataframe of different combinations of parents and individual with the proportion of pedigree conflicts in each trio
+#' 
+#' @examples
+#' data(potato.data)
+#' proportion(parents = c("W6511.1R","VillettaRose","W9914.1R"),
+#'            individual = "W15268.1R",
+#'            data = potato.data)
 #'
 #' @export
 

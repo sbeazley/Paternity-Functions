@@ -2,7 +2,7 @@
 #
 # Package: Paternity
 #
-# File: functions.R
+# File: paternity.R
 # Contains: paternity
 #
 # Written by Samuel Beazley
@@ -10,15 +10,27 @@
 # First version: March-2021
 # Last update: 5-Apr-2021
 #
+# License: GPL-3
+#
 #########################################################################
-#' @import dplyr
-#' @importFrom magrittr "%>%"
-#'
-#'
+
 #' Paternity by Exclusion Test
+#' 
+#' Performs paternity by exclusion based on a matrix three entries (trio: mom, individual, dad), returns the proportion of mismatch cases.
 #'
 #' @param x matrix of values to test. The matrix should be 3 columns with the progeny being tested in the second column.
+#' 
 #' @return A vector with proportion of cases that has a mismatch a.k.a. pedigree conflict.
+#' 
+#' @examples
+#' data(potato.data)
+#' trio1 = potato.data[,c("W6511.1R", "W15268.5R", "VillettaRose")]
+#' trio2 = potato.data[,c("W6511.1R", "W15268.5R", "W9914.1R")]
+#' paternity(trio1) #more likely to be this trio
+#' paternity(trio2)
+#' 
+#' @import dplyr
+#' @importFrom magrittr "%>%"
 #'
 #' @export
 

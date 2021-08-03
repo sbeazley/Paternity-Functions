@@ -1,6 +1,6 @@
 #########################################################################
 #
-# Package: Paternity
+# Package: Paternity-Functions
 #
 # File: paternity.R
 # Contains: paternity

@@ -1,6 +1,6 @@
 #########################################################################
 #
-# Package:
+# Package: Paternity-Functions
 #
 # File: filter_homozygous.R
 # Contains: filter_homozygous

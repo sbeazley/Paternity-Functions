@@ -1,6 +1,6 @@
 #########################################################################
 #
-# Package:
+# Package: Paternity-Functions
 #
 # File: selection.R
 # Contains: selection

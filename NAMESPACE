@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+import(dplyr)
+importFrom(magrittr,"%>%")
+export(paternity)
+export(proportion)

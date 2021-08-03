@@ -1,0 +1,11 @@
+Package: Paternity
+Type: Package
+Title: What the Package Does (Title Case)
+Author: Sam Beazley
+Description: Functions to determine the test paternity by exclusion
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dplyr,
+  gtools,
+  magrittr

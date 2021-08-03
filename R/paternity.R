@@ -5,7 +5,7 @@
 # File: paternity.R
 # Contains: paternity
 #
-# Written by Samuel Beazley
+# Written by Samuel Beazley and Rodrigo Amadeu
 #
 # First version: March-2021
 # Last update: 5-Apr-2021
@@ -38,5 +38,6 @@ paternity <- function(x)
 {
   mcount=sum((x[,1]==0)*(x[,3]==0)*(x[,2]==0))+sum((x[,1]==4)*(x[,3]==4)*(x[,2]==4))
   total=sum((x[,1]==0)*(x[,3]==0)+(x[,1]==4)*(x[,3]==4))
+
   return(c(1-mcount/total, total))
 }

@@ -1,11 +1,19 @@
-Package: Paternity
-Type: Package
-Title: What the Package Does (Title Case)
-Author: Sam Beazley
-Description: Functions to determine the test paternity by exclusion
-Encoding: UTF-8
-LazyData: true
+Package: PloidyPaternity
+Title: Paternity per exclusion in autotetraploids
+Version: 0.0.1
+Description: Functions to determine the test paternity by exclusion in autotetraploids and to select best subset of molecular markers for the test
+Authors@R: c(person("Sam", "Beazley", role="aut", email = "sbeazley@ufl.edu"),
+             person("Rodrigo", "Amadeu", role=c("ctb","cre"), email = "rramadeu@gmail.com"))
+Author: Sam Beazley [aut], Rodrigo Amadeu [ctb, cre]
+Depends: R (>= 4.0.1)
 Imports:
   dplyr,
   gtools,
   magrittr
+VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/rramadeu/PloidyPaternity
+Mainteiner: Rodrigo Amadeu <rramadeu@gmail.com>
+RoxygenNote: 7.1.1
+NeedsCompilation: no

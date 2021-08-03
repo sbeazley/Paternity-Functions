@@ -5,10 +5,10 @@
 # File: proportion.R
 # Contains: proportion
 #
-# Written by Samuel Beazley
+# Written by Samuel Beazley and Rodrigo Amadeu
 #
 # First version: March-2021
-# Last update: 5-Apr-2021
+# Last update: 2-Aug-2021
 #
 #########################################################################
 #'

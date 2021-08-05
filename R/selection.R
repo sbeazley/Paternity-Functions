@@ -39,11 +39,11 @@
 selection <- function(parents, initial, total, data, pedigree, method = "forward")
 {
 
-  rownames(geno_filtered1)=1:nrow(geno_filtered1) #fixing rownames
-  select.markers = as.numeric(names(sort(apply(geno_filtered1[,c("A","B","C","D")],1,var),decreasing = TRUE))[1:initial])
-  candidate.markers = c(1:nrow(geno_filtered1))[-select.markers]
-  geno_filtered1_init = geno_filtered1[select.markers,]
-  init = proportion(parents = c("A", "B", "C", "D"), individual = geno_pedigree[,1], data = geno_filtered1_init)
+  rownames(data)=1:nrow(data) #fixing rownames
+  select.markers = as.numeric(names(sort(apply(data[,parents],1,var),decreasing = TRUE))[1:initial])
+  candidate.markers = c(1:nrow(data))[-select.markers]
+  data_init = data[select.markers,]
+  init = proportion(parents = parents, individual = pedigree[,1], data = data_init)
   correct.assign = rep(0,length(candidate.markers))
 
   rownames(data)=1:nrow(data) #fixing rownames

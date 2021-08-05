@@ -5,10 +5,10 @@
 # File: proportion.R
 # Contains: proportion
 #
-# Written by Samuel Beazley
+# Written by Samuel Beazley and Rodrigo Amadeu
 #
 # First version: March-2021
-# Last update: 5-Apr-2021
+# Last update: 5-Aug-2021
 #
 #########################################################################
 #'
@@ -32,20 +32,30 @@
 
 proportion <- function(parents, individual, data)
 {
-  table <- gtools::combinations(n = length(parents), r = 2, repeats.allowed = F, v = parents) #unique combinations of parents
-  table <- cbind(table, rep(individual, dim(table)[1]) ) #creating table of parents to test
+  DF <- data.frame()
 
-  vec <- c() #initializing vector
-
-  for(i in 1:dim(table)[1])
+  for(indiv in individuals)
   {
-    vec <- cbind(vec, paternity(cbind(data[[ table[i,1] ]], data[[ table[i,3] ]], data[[ table[i,2] ]]) )) #vector of statistic values
+    table <- gtools::combinations(n = length(parents), r = 2, repeats.allowed = F, v = parents) #unique combinations of parents
+    table <- cbind(table, rep(indiv, dim(table)[1]) ) #creating table of parents to test
+
+    vec <- c() #initializing vector
+    vec2 <- c()
+
+    for(i in 1:dim(table)[1])
+    {
+      tmp <- paternity(cbind(data[[ table[i,1] ]], data[[ table[i,3] ]], data[[ table[i,2] ]]))
+      vec <- cbind(vec,tmp[1])
+      vec2 <- cbind(vec2,tmp[2])
+    }
+
+    table <- cbind(table, t(vec2), t(vec)) #adding statistic column
+    colnames(table) <- c("Parent1", "Parent2", "Individual", "N", "Statistic") #labelling columns
+
+
+    DF <- rbind(DF, as.data.frame(subset(table, select = c("Parent1", "Parent2", "Individual", "N", "Statistic")))) #final dataframe
+
   }
-
-  table <- cbind(table, t(vec)) #adding statistic column
-  colnames(table) <- c("Parent1", "Parent2", "Individual", "Statistic") #labelling columns
-
-  DF <- as.data.frame(subset(table, select = c("Parent1", "Parent2", "Statistic"))) #final dataframe
 
   return(DF)
 }

@@ -5,10 +5,10 @@
 # File: paternity.R
 # Contains: paternity
 #
-# Written by Samuel Beazley
+# Written by Samuel Beazley and Rodrigo Amadeu
 #
 # First version: March-2021
-# Last update: 5-Apr-2021
+# Last update: 5-Aug-2021
 #
 # License: GPL-3
 #
@@ -20,7 +20,7 @@
 #'
 #' @param x matrix of values to test. The matrix should be 3 columns with the progeny being tested in the second column.
 #' 
-#' @return A vector with proportion of cases that has a mismatch a.k.a. pedigree conflict.
+#' @return A vector with proportion of cases that has a mismatch a.k.a. pedigree conflict and the total number of cases used.
 #' 
 #' @examples
 #' data(potato.data)
@@ -36,21 +36,8 @@
 
 paternity <- function(x)
 {
-  y <- dplyr::as_tibble(x) #converting matrix to tibble
+  mcount=sum((x[,1]==0)*(x[,3]==0)*(x[,2]==0))+sum((x[,1]==4)*(x[,3]==4)*(x[,2]==4))
+  total=sum((x[,1]==0)*(x[,3]==0)+(x[,1]==4)*(x[,3]==4))
 
-  colnames(y) <- c("Mom", "Progeny", "Dad") #labeling columns
-
-  subset <- y %>% dplyr::filter((Mom == 0 & Dad == 0) | (Mom == 4 & Dad == 4))
-  #subsetting when Mom and Dad are both 0 or 4
-
-  total <- dim(subset)[1] #total number of times Mom and Dad are both 0 or 4
-
-  mismatch <- (subset %>% filter(Mom != Progeny))
-  #subsetting when Progeny is not equal to both Mom and Dad
-
-  mcount = dim(mismatch)[1] #counting number of mismatched
-
-  p <- (mcount / total) #proportion of mismatched
-
-  return(p)
+  return(c(1-mcount/total, total))
 }
